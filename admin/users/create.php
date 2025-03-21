@@ -1,5 +1,4 @@
 <?php
-session_start();
 include '../layout/header.php';
 require_once '../class/Admin.php';
 ?>

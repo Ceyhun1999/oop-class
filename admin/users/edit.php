@@ -1,5 +1,4 @@
 <?php
-session_start();
 include '../layout/header.php';
 require_once '../class/Admin.php';
 $admin = new Admin;
@@ -9,7 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
         $email = $admin->getById($id) ? $admin->getById($id) : '';
     }
 }
-
 ?>
 
 <div class="main">

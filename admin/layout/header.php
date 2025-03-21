@@ -1,11 +1,9 @@
 <?php
 session_start();
-
-if(!isset($_SESSION['login']) && $_SESSION['login'] === false) {
+if (!isset($_SESSION['login']) || $_SESSION['login'] === false) {
     header('location: login');
+    exit;
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -20,12 +18,22 @@ if(!isset($_SESSION['login']) && $_SESSION['login'] === false) {
 
 <body>
     <div class="container">
+
+
         <aside class="sidebar">
             <h2>Меню</h2>
             <ul>
+                <li>
+                    <a> <?php
+                        if (isset($_SESSION['username'])) {
+                            echo $_SESSION['username'];
+                        }
+                        ?></a>
+                </li>
                 <li><a href="#">Главная</a></li>
                 <li><a href="http://localhost/lesson/oopwebsite/admin/users/">Пользователи</a></li>
                 <li><a href="#">Настройки</a></li>
-                <li><a href="#">Отчеты</a></li>
+                <li><a href="http://localhost/lesson/oopwebsite/admin/login/logout.php">Выход</a></li>
             </ul>
         </aside>
+        <!-- Остальное содержимое страницы -->

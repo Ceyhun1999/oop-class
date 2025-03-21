@@ -1,35 +1,11 @@
 <?php
 session_start();
+if (isset($_SESSION['login']) && $_SESSION['login'] === TRUE) {
+    header('Location: ../');
+};
 
 
-function sessionMessage($login, $email, $path)
-{
-    $_SESSION['login'] = $login;
-    $_SESSION['username'] = $email;
-    header("location: $path");
-    exit;
-}
-require_once 'class/Admin.php';
-$admin = new Admin;
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['email'], $_POST['password']) && !empty(trim($_POST['password']))  && !empty(trim($_POST['email']))) {
-        $result = $admin->login(mysqli_real_escape_string($admin->db->conn, $_POST['email']));
-
-        if ($result->num_rows > 0) {
-            $user = $result->fetch_assoc();
-            if (password_verify($_POST['password'], $user['password'])) {
-                sessionMessage(true, $user['email'], '../admin');
-            } else {
-                sessionMessage(false, 'Неверный пароль', 'login');
-            }
-        } else {
-            sessionMessage(false, 'Такого пользователя не существует', 'login');
-        }
-    }
-    exit();
-}
 ?>
-
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -101,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             ?>
         </p>
-        <form action="" method="POST">
+        <form action="login_auth.php" method="POST">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" placeholder="Введите email" required>
 

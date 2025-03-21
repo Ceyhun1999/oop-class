@@ -1,5 +1,4 @@
 <?php
-session_start();
 include '../layout/header.php';
 require_once '../class/Admin.php';
 
@@ -11,7 +10,9 @@ require_once '../class/Admin.php';
         if (isset($_SESSION['messageForUsersPage'])) {
             echo $_SESSION['messageForUsersPage'];
             unset($_SESSION['messageForUsersPage']);
+           
         }
+        echo  $_SESSION['username'];
         ?>
     </p>
     <!-- Кнопка для создания нового пользователя -->
