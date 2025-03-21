@@ -1,5 +1,5 @@
 <?php
-require_once 'C:\wamp64\www\lesson\website3\config/Database.php';
+require_once 'C:\wamp64\www\lesson\oopwebsite\config/Database.php';
 class Admin
 {
     public $db;
@@ -35,6 +35,19 @@ class Admin
             return 'Пользователь успешно создан';
         } else {
             return "Произошла ошибка";
+        }
+    }
+
+
+    public function getByEmail($email)
+    {
+        $sql = "SELECT * FROM admins WHERE email='$email'";
+        $result = $this->db->conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -83,6 +96,18 @@ class Admin
             return true;
         } else {
             return false;
+        }
+    }
+
+    public function login($email)
+    {
+        $sql = "SELECT * FROM admins WHERE email='$email'";
+        $result = $this->db->conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            return $result;
+        } else {
+            return $result;
         }
     }
 }
