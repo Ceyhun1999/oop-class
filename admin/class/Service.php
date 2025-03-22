@@ -36,4 +36,23 @@ class Service
             return false;
         }
     }
+
+
+    public function getById($id)
+    {
+        $sql = "SELECT * FROM service WHERE id='$id'";
+        $result = $this->db->conn->query($sql);
+        return $result;
+    }
+
+
+    public function update($id, $title, $description, $image)
+    {
+        $sql = "UPDATE service SET title='$title', description='$description', image='$image' WHERE id='$id'";
+        if ($this->db->conn->query($sql) === TRUE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
