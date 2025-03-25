@@ -43,6 +43,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] === false) {
                 <li><a href="#">Главная</a></li>
                 <li><a href="http://localhost/lesson/oopwebsite/admin/users/">Пользователи</a></li>
                 <li><a href="http://localhost/lesson/oopwebsite/admin/slider/">Слайдер</a></li>
+                <li><a href="http://localhost/lesson/oopwebsite/admin/blogs/">Блоги</a></li>
                 <li><a href="http://localhost/lesson/oopwebsite/admin/service/">Сервис</a></li>
                 <li><a href="http://localhost/lesson/oopwebsite/admin/login/logout.php">Выход</a></li>
             </ul>
